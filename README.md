@@ -14,6 +14,15 @@ Technology Stack
 5. Run Update-Database to generate database
 6. Set startup project to multiple projects include: Recruitment.Api and Recruitment.WebApp
 
+# Login
+I created some model account with roles: admin, recruitment below:
+
+Username | Password | Role(s)
+-------- | -------- | --------
+quochieu@gmail.com | abc123 | Admin
+lehieu@gmail.com | abc123 | Admin
+sanlong@gmail.com | abc123 | Recruitment
+
 # Coder Information
 * Email: quochieuu@gmail.com
 * Facebook: fb.com/hieuqdev
