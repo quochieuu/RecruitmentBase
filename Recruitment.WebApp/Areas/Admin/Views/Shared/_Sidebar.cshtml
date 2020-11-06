@@ -1,0 +1,172 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+<div class="sidebar sidebar-style-2">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="~/AtlantisAdmin/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                            <span>
+                                @user.FirstName @user.LastName
+                                <span class="user-level">@user.UserName</span>
+                                <span class="caret"></span>
+                            </span>
+                        </a>
+                    }
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="#profile">
+                                    <span class="link-collapse">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#edit">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/account/logout">
+                                    <span class="link-collapse">Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item active">
+                    <a href="/admin">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Managements</h4>
+                </li>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Blogger"))
+                {
+
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Blog Posts</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="/admin/post/create">
+                                        <span class="sub-item">New Post</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/post">
+                                        <span class="sub-item">All Posts</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/tags">
+                                        <span class="sub-item">All Tags</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/posttag">
+                                        <span class="sub-item">List Content Tag</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Jobs</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="/admin/jobs/create">
+                                        <span class="sub-item">New Job</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/jobs">
+                                        <span class="sub-item">List Jobs</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/candidates">
+                                        <span class="sub-item">List Candidate</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#sidebarLayouts">
+                            <i class="fas fa-th-list"></i>
+                            <p>User Managements</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="sidebarLayouts">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="/admin/auth/listUsers">
+                                        <span class="sub-item">List Users</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/auth/list-roles">
+                                        <span class="sub-item">List Roles</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#sys">
+                            <i class="fas fa-user-shield"></i>
+                            <p>System</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="sys">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="/admin/system/direction">
+                                        <span class="sub-item">Directions</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

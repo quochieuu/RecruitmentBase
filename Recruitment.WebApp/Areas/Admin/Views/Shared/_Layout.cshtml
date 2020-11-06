@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@ViewData["Title"]</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="~/AtlantisAdmin/assets/img/icon.ico" type="image/x-icon" />
+    <!-- Fonts and icons -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/webfont/webfont.min.js"></script>
+    <link rel="stylesheet" href="~/js/plugins/summernote-bs4.css">
+    <link href="~/js/plugins/summernote.min.css" rel="stylesheet" />
+    <script>
+        WebFont.load({
+            google: { "families": ["Lato:300,400,700,900"] },
+            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/AtlantisAdmin/assets/css/fonts.min.css'] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/AtlantisAdmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/AtlantisAdmin/assets/css/atlantis.min.css">
+    <link rel="stylesheet" href="https://www.jqueryscript.net/css/jquerysctipttop.css" />
+    <link rel="stylesheet" href="https://www.jqueryscript.net/demo/Tiny-Text-Field-Based-Tags-Input-Plugin-For-jQuery-Tagify/tagify.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="~/AtlantisAdmin/assets/css/demo.css">
+
+    <link href="~/js/plugins/trumbowyg/dist/ui/trumbowyg.css" rel="stylesheet" />
+
+    <!-- tags-->
+    <link href="~/js/plugins/tags/jquerysctipttop.css" rel="stylesheet" />
+    <link href="~/js/plugins/tags/amsify.suggestags.css" rel="stylesheet" />
+    <style>
+        .form-check [type=checkbox]:checked, .form-check [type=checkbox]:not(:checked) {
+            position: absolute;
+            left: inherit
+        }
+
+        .job-cards {
+            padding-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-column-gap: 25px;
+            grid-row-gap: 25px;
+            -webkit-animation: slideY .6s both;
+            animation: slideY .6s both
+        }
+
+        .job-card {
+            padding: 20px 16px;
+            background-color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            -webkit-transition: .2s;
+            transition: .2s
+        }
+
+            .job-card:hover {
+                -webkit-transform: scale(1.02);
+                transform: scale(1.02)
+            }
+
+            .job-card svg {
+                width: 46px;
+                padding: 10px;
+                border-radius: 8px
+            }
+
+        .job-card-title {
+            font-weight: 600;
+            margin-top: 16px;
+            font-size: 14px
+        }
+
+        .job-card-subtitle {
+            color: var(--subtitle-color);
+            font-size: 13px;
+            margin-top: 14px;
+            line-height: 1.6em
+        }
+
+        .job-card-header {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: start;
+            align-items: flex-start
+        }
+
+        .search-buttons.card-buttons {
+            display: inline-block;
+            border: none;
+            color: #fff;
+            background-color: #1572e8;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 14px
+        }
+
+        .job-cards {
+            padding-top: 20px;
+            display: block;
+            width: 33%;
+            animation: slideY .6s both;
+            float: left;
+            padding: 15px;
+        }
+
+        .job-card-header img {
+            width: 100%;
+            height: auto;
+        }
+
+        .job-card-header {
+            width: 100%;
+            overflow: hidden;
+            height: 70px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-dot {
+            background-color: #ccc;
+            box-shadow: -6px 0 0 0 #ccc, 6px 0 0 0 #ccc;
+            width: 4px;
+            height: 4px;
+            border: 0;
+            padding: 0;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: 8px;
+        }
+
+        .hcus {
+            position: absolute;
+            background: transparent;
+            border: none;
+            right: 0;
+            cursor: pointer;
+        }
+
+            .hcus:after {
+                display: none
+            }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="blue">
+
+                <a href="index.html" class="logo">
+                    <img src="~/AtlantisAdmin/assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+
+                <div class="container-fluid">
+                    <div class="collapse" id="search-nav">
+                        <form class="navbar-left navbar-form nav-search mr-md-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-search pr-1">
+                                        <i class="fa fa-search search-icon"></i>
+                                    </button>
+                                </div>
+                                <input type="text" placeholder="Search ..." class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <partial name="~/Areas/Admin/Views/Shared/_MainNav.cshtml" />
+
+                </div>
+            </nav>
+            <!-- End Navbar -->
+        </div>
+
+        <!-- Sidebar -->
+        <partial name="~/Areas/Admin/Views/Shared/_Sidebar.cshtml" />
+
+        <!-- End Sidebar -->
+
+        <div class="main-panel">
+            <div class="content">
+                @RenderBody()
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.themekita.com">
+                                    ThemeKita
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Help
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Licenses
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright ml-auto">
+                        2020, dev with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.quochieu.com">Hieu Quoc</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Custom template | don't include it in your project! -->
+        <div class="custom-template">
+            <div class="title">Settings</div>
+            <div class="custom-content">
+                <div class="switcher">
+                    <div class="switch-block">
+                        <h4>Logo Header</h4>
+                        <div class="btnSwitch">
+                            <button type="button" class="changeLogoHeaderColor" data-color="dark"></button>
+                            <button type="button" class="selected changeLogoHeaderColor" data-color="blue"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="green"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="red"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="white"></button>
+                            <br />
+                            <button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
+                            <button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
+                        </div>
+                    </div>
+                    <div class="switch-block">
+                        <h4>Navbar Header</h4>
+                        <div class="btnSwitch">
+                            <button type="button" class="changeTopBarColor" data-color="dark"></button>
+                            <button type="button" class="changeTopBarColor" data-color="blue"></button>
+                            <button type="button" class="changeTopBarColor" data-color="purple"></button>
+                            <button type="button" class="changeTopBarColor" data-color="light-blue"></button>
+                            <button type="button" class="changeTopBarColor" data-color="green"></button>
+                            <button type="button" class="changeTopBarColor" data-color="orange"></button>
+                            <button type="button" class="changeTopBarColor" data-color="red"></button>
+                            <button type="button" class="changeTopBarColor" data-color="white"></button>
+                            <br />
+                            <button type="button" class="changeTopBarColor" data-color="dark2"></button>
+                            <button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
+                            <button type="button" class="changeTopBarColor" data-color="purple2"></button>
+                            <button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
+                            <button type="button" class="changeTopBarColor" data-color="green2"></button>
+                            <button type="button" class="changeTopBarColor" data-color="orange2"></button>
+                            <button type="button" class="changeTopBarColor" data-color="red2"></button>
+                        </div>
+                    </div>
+                    <div class="switch-block">
+                        <h4>Sidebar</h4>
+                        <div class="btnSwitch">
+                            <button type="button" class="selected changeSideBarColor" data-color="white"></button>
+                            <button type="button" class="changeSideBarColor" data-color="dark"></button>
+                            <button type="button" class="changeSideBarColor" data-color="dark2"></button>
+                        </div>
+                    </div>
+                    <div class="switch-block">
+                        <h4>Background</h4>
+                        <div class="btnSwitch">
+                            <button type="button" class="changeBackgroundColor" data-color="bg2"></button>
+                            <button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
+                            <button type="button" class="changeBackgroundColor" data-color="bg3"></button>
+                            <button type="button" class="changeBackgroundColor" data-color="dark"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-toggle">
+                <i class="flaticon-settings"></i>
+            </div>
+        </div>
+        <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="~/AtlantisAdmin/assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="~/AtlantisAdmin/assets/js/core/popper.min.js"></script>
+    <script src="~/AtlantisAdmin/assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="~/AtlantisAdmin/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+    <!-- Chart JS -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/AtlantisAdmin/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="~/AtlantisAdmin/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Atlantis JS -->
+    <script src="~/AtlantisAdmin/assets/js/atlantis.min.js"></script>
+
+    <!-- Atlantis DEMO methods, don't include it in your project! -->
+    <script src="~/AtlantisAdmin/assets/js/setting-demo.js"></script>
+    <script src="~/AtlantisAdmin/assets/js/demo.js"></script>
+    <script>
+        Circles.create({
+            id: 'circles-1',
+            radius: 45,
+            value: 60,
+            maxValue: 100,
+            width: 7,
+            text: 5,
+            colors: ['#f1f1f1', '#FF9E27'],
+            duration: 400,
+            wrpClass: 'circles-wrp',
+            textClass: 'circles-text',
+            styleWrapper: true,
+            styleText: true
+        })
+
+        Circles.create({
+            id: 'circles-2',
+            radius: 45,
+            value: 70,
+            maxValue: 100,
+            width: 7,
+            text: 36,
+            colors: ['#f1f1f1', '#2BB930'],
+            duration: 400,
+            wrpClass: 'circles-wrp',
+            textClass: 'circles-text',
+            styleWrapper: true,
+            styleText: true
+        })
+
+        Circles.create({
+            id: 'circles-3',
+            radius: 45,
+            value: 40,
+            maxValue: 100,
+            width: 7,
+            text: 12,
+            colors: ['#f1f1f1', '#F25961'],
+            duration: 400,
+            wrpClass: 'circles-wrp',
+            textClass: 'circles-text',
+            styleWrapper: true,
+            styleText: true
+        })
+
+        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+        var mytotalIncomeChart = new Chart(totalIncomeChart, {
+            type: 'bar',
+            data: {
+                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+                datasets: [{
+                    label: "Total Income",
+                    backgroundColor: '#ff9e27',
+                    borderColor: 'rgb(23, 125, 255)',
+                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false,
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            display: false //this will remove only the label
+                        },
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        }
+                    }]
+                },
+            }
+        });
+
+        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+            type: 'line',
+            height: '70',
+            width: '100%',
+            lineWidth: '2',
+            lineColor: '#ffa534',
+            fillColor: 'rgba(255, 165, 52, .14)'
+        });
+
+    </script>
+
+
+    <script src="~/js/plugins/trumbowyg/dist/trumbowyg.js"></script>
+    <script src="~/js/plugins/trumbowyg/plugins/upload/trumbowyg.upload.js"></script>
+    <script src="~/js/plugins/tags/jquery.amsify.suggestags.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

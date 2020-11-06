@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Trang Chủ";
+}
+
+<div class="searched-jobs">
+    <div class="searched-bar">
+        <div class="searched-show">Showing @ViewBag.CountListJob Jobs</div>
+        <div class="searched-sort">Sort by: <span class="post-time">Newest Post </span><span class="menu-icon">▼</span></div>
+    </div>
+    <div class="job-cards">
+        @foreach (var job in ViewBag.ListJob)
+        {
+            <div class="job-card">
+                <div class="job-card-header">
+                    <img src="~/client/assets/img/@job.JobImage" />
+                    <div class="menu-dot"></div>
+                </div>
+                <div class="job-card-title">@job.Position</div>
+                <div class="job-card-subtitle">
+                    Mức lương: @job.SalaryMin - @job.SalaryMax (@job.SalaryUnit) <br />
+                    Kinh nghiệm: @job.Experience  <br />
+                </div>
+                <div class="job-detail-buttons">
+                    <button class="search-buttons detail-button">@job.Address</button>
+                    <button class="search-buttons detail-button">@job.DealineForSubmission.ToString("dd/MM/yyyy")</button>
+                </div>
+                <div class="job-card-buttons">
+                    <a asp-area="" asp-controller="Candidates" asp-action="Create" asp-route-jobId="@job.Id" class="search-buttons card-buttons" style="text-align:center; text-decoration:none;">Apply Now</a>
+                    <a asp-area="" asp-controller="Jobs" asp-action="Details" asp-route-slug="@job.Slug" class="search-buttons card-buttons-msg" style="text-align:center; text-decoration:none;">Xem Chi tiết</a>
+                </div>
+            </div>
+        }
+
+    </div>
+    
+</div>

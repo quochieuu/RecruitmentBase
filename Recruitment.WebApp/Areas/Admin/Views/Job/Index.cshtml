@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Recruitment.Application.MJob.JobResponse>
+
+@{
+    ViewData["Title"] = "Quản lý vị trí ứng tuyển";
+}
+
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="">
+                    <div class="d-flex align-items-center">
+                        <a class="btn btn-primary btn-round ml-auto" asp-action="Create">
+                            <i class="fa fa-plus"></i>
+                            Create New
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="ImportUpload" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="file" id="reportfile" name="reportfile" class="form-control" />
+                            </div>
+                            <div class="col-md-8">
+                                <input type="submit" id="btnUpload" value="Upload" class="search-buttons card-buttons" style="cursor:pointer" />
+                            </div>
+                        </div>
+                    </form>
+                    <div class="searched-show">Showing @ViewBag.CountListJob Jobs</div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="job-cards">
+                            <div class="job-card">
+                                <div class="btn-group w-100">
+                                    <button type="button" class="dropdown-toggle hcus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="menu-dot"></div>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" asp-action="ChangeImage" asp-route-id="@item.Id">Thay đổi ảnh</a>
+                                        <a class="dropdown-item" asp-action="Update" asp-route-id="@item.Id">Chỉnh sửa</a>
+                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Chi Tiết</a>
+                                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id" onclick="alert('Xác nhận xóa vị trí tuyển dụng này?')">Xóa</a>
+                                    </div>
+                                </div>
+                                <div class="job-card-header">
+                                    <img src="~/client/assets/img/@item.JobImage" alt="@item.Position" />
+
+                                </div>
+                                <div class="job-card-title">@item.Position</div>
+                                <div class="job-card-subtitle">
+                                    Salary: @item.SalaryMin.ToString("G29") - @item.SalaryMax.ToString("G29") (@item.SalaryUnit) <br />
+                                    Work Place: @item.Address <br />
+                                    Deadline: @item.DealineForSubmission.ToString("dd/MM/yyyy") <br />
+                                </div>
+                                <div class="job-card-buttons">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="search-buttons card-buttons">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

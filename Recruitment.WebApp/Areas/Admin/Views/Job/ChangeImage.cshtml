@@ -1,0 +1,106 @@
+﻿@model Recruitment.Application.MJob.JobRequest
+
+@{
+    ViewData["Title"] = "Edit Image";
+}
+<style>
+    #previewImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .custom-file-inputx {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        margin-top: -40px;
+    }
+
+    label.control-label.filelabel {
+        display: block;
+        text-align: center;
+        padding: 3px;
+        background: #f1f1f1;
+        margin-top: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Thay đổi ảnh</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="ChangeImage" enctype="multipart/form-data" method="post">
+                        <div class="row">
+
+                            <input hidden="hidden" asp-for="Id" class="form-control" />
+                            <input hidden="hidden" asp-for="Position" class="form-control" />
+                            <input hidden="hidden" asp-for="ApplicationEmail" class="form-control" />
+                            <input hidden="hidden" asp-for="JobDetail" class="form-control" />
+                            <input hidden="hidden" asp-for="Amount" class="form-control" />
+                            <input hidden="hidden" asp-for="Experience" class="form-control" />
+                            <input hidden="hidden" asp-for="SalaryMin" class="form-control" />
+                            <input hidden="hidden" asp-for="SalaryMax" class="form-control" />
+                            <input hidden="hidden" asp-for="SalaryUnit" class="form-control" />
+                            <input hidden="hidden" asp-for="WorkTime" class="form-control" />
+                            <input hidden="hidden" asp-for="Address" class="form-control" />
+                            <input hidden="hidden" asp-for="DealineForSubmission" class="form-control" />
+                            <input hidden="hidden" asp-for="CreatedOn" class="form-control" />
+                            <input hidden="hidden" asp-for="UpdatedOn" class="form-control" />
+                            <input hidden="hidden" asp-for="IsActive" class="form-control" />
+
+
+                            <div class="col-md-3">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <img id="previewImg" src="~/lib/img/no-image-box.png" alt="Placeholder">
+                                    @*<label class="control-label filelabel">Upload Image</label>*@
+                                    <input type="file" name="JobImage" class="form-control custom-file-inputxs" onchange="previewFile(this);" />
+                                    <span asp-validation-for="JobImage" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Đăng Tin" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function previewFile(input) {
+            var file = $("input[type=file]").get(0).files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function () {
+                    $("#previewImg").attr("src", reader.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+}

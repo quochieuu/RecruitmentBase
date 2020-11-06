@@ -1,0 +1,245 @@
+﻿/* CSS FOR LOGIN & REGISTER FORM */
+.login-page-wrap {
+    width: 100%;
+    height: auto;
+}
+
+.login-page-container {
+    width: 450px;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    text-align: center;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 20px 20px rgba(0,0,0,.05);
+    margin-top: 3%;
+}
+
+.reg-page-cont {
+    top: 5%;
+}
+
+form.loginform {
+    width: 80%;
+    height: 70%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.login-logo {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+    .login-logo h3 {
+        width: 100%;
+        margin: 0;
+        height: auto;
+        padding: 2.2rem 0;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: #4CAF50;
+    }
+
+.formgr {
+    width: 100%;
+    height: 55px;
+}
+
+input.inp, input.login-email {
+    width: 100%;
+    background: #fff;
+    padding: .6rem 1rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+    input.inp:focus,
+    input.login-password:focus,
+    input.login-email:focus {
+        outline: 0;
+    }
+
+    input.inp::placeholder,
+    input.login-password::placeholder,
+    input.login-email::placeholder {
+        font-size: .9rem;
+        color: #7c7c7c;
+    }
+
+input.login-password {
+    width: 100%;
+    background: #fff;
+    padding: .6rem 1rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+    input.inp:hover,
+    input.login-email:hover,
+    input.login-password:hover {
+        -webkit-transition: border 3s; /* Safari prior 6.1 */
+        transition: border 1s;
+        border: 1px solid #018f41;
+    }
+
+button.btnlogin {
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    padding: .9rem 0;
+    margin-top: 0;
+    color: #fff;
+    background-color: #018f41;
+    border-color: #51d2b7;
+    font-size: .9rem;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+    button.btnlogin:hover {
+        background: #047838;
+        color: #fff;
+    }
+
+.formgr label {
+    display: inline-block;
+    float: left;
+    color: #555;
+    margin-top: 1rem;
+}
+
+    .formgr label.lbright {
+        float: right;
+    }
+
+.formgr-col {
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+
+.btnf {
+    display: block;
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #3b5998;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    border: none;
+    border-radius: 5px;
+}
+
+    .btnf a {
+        display: block;
+        color: #fff;
+        font-size: .9rem;
+        text-decoration: none;
+        padding: .9rem 3.3rem;
+    }
+
+.btn-facebook {
+    display: block;
+    background-color: #3b5998;
+}
+
+.btn-gplus {
+    display: block;
+    background-color: #cd3623;
+}
+
+.formgr span {
+    color: #555;
+    font-size: .9rem;
+}
+
+    .formgr span a {
+        color: #018f41;
+    }
+
+.lbright span a {
+    text-decoration: none;
+    color: #555;
+}
+
+.formgr2 {
+    height: 42px;
+}
+
+.formgr-last {
+    height: 80px;
+    line-height: 70px;
+}
+
+.or-sec {
+    display: block;
+    text-align: center;
+    width: 100%;
+    clear: both;
+    height: auto;
+    position: relative;
+    z-index: 9999;
+    margin-top: 1rem;
+}
+
+    .or-sec p {
+        color: #555;
+        font-size: .8rem;
+        display: inline;
+        position: inherit;
+        background: #fff;
+        padding: 0 15px;
+    }
+
+    .or-sec:before {
+        content: "";
+        height: 1px;
+        width: 100%;
+        float: left;
+        display: block;
+        background: #ccc;
+        position: absolute;
+        top: 12px;
+        z-index: 0;
+    }
+
+button.btn-las2 {
+    background: #d5d5d5;
+    color: #5f7260;
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+}
+
+    button.btn-las2 a {
+        text-decoration: none;
+        color: #5f7260;
+    }
+
+    button.btn-las2:hover {
+        background: #e9e9e9;
+        color: #5f7267;
+    }
+
+/* responsive for login and register */
+@media all and (max-width: 1024px) {
+}
+
+@media all and (max-width: 768px) {
+}
+
+@media all and (max-width: 600px) {
+}
+
+@media all and (max-width: 320px) {
+}
+/* END CSS FOR LOGIN & REGISTER FORM */

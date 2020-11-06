@@ -1,0 +1,48 @@
+﻿@model List<Recruitment.WebApp.Areas.Admin.ViewModel.UserRoleViewModel>
+
+@{
+    var roleId = ViewBag.roleId;
+}
+
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Edit users in this role</h4>
+                            <a class="btn btn-primary btn-round ml-auto" asp-action="Create">
+                                <i class="fa fa-plus"></i>
+                                Create New
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="">
+                                <div class="card-body">
+                                    @for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model[i].UserId" />
+                                            <input type="hidden" asp-for="@Model[i].UserName" />
+                                            <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                                                @Model[i].UserName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="card-footer">
+                                    <input type="submit" value="Update" class="btn btn-primary"
+                                           style="width:auto" />
+                                    <a asp-action="EditRole" asp-route-id="@roleId"
+                                       class="btn btn-primary" style="width:auto">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

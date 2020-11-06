@@ -1,0 +1,222 @@
+﻿@model Recruitment.Data.Entities.Job
+
+@{
+    ViewData["Title"] = "Thêm mới vị trí ứng tuyển";
+}
+<style>
+    #previewImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .custom-file-inputx {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        margin-top: -40px;
+    }
+
+    label.control-label.filelabel {
+        display: block;
+        text-align: center;
+        padding: 3px;
+        background: #f1f1f1;
+        margin-top: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Thêm mới vị trí ứng tuyển</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" enctype="multipart/form-data" method="post">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <img id="previewImg" src="~/lib/img/no-image-box.png" alt="Placeholder">
+                                    @*<label class="control-label filelabel">Upload Image</label>*@
+                                    <input type="file" name="JobImage" class="form-control custom-file-inputxs" onchange="previewFile(this);" />
+                                    <span asp-validation-for="JobImage" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label class="control-label">Chức vụ</label>
+                                    <input asp-for="Position" class="form-control" placeholder="vd Quản lý bán hàng" />
+                                    <span asp-validation-for="Position" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationEmail" class="control-label"></label>
+                                    <input asp-for="ApplicationEmail" class="form-control" placeholder="jobsearch@gmail.com" />
+                                    <span asp-validation-for="ApplicationEmail" class="text-danger"></span>
+                                    <small>Ứng viên có thể gửi hồ sơ đến địa chỉ email này</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label asp-for="JobDetail" class="control-label"></label>
+                                    <textarea asp-for="JobDetail" class="form-control" rows="8" id="post__content-create"></textarea>
+                                    <span asp-validation-for="JobDetail" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-4 pr-0">
+                                        <div class="form-group">
+                                            <label class="control-label">Số lượng cần tuyển</label>
+                                            <input asp-for="Amount" class="form-control" placeholder="40" />
+                                            <span asp-validation-for="Amount" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 pl-0">
+                                        <div class="form-group">
+                                            <label class="control-label text-right">Yêu cầu kinh nghiệm</label>
+                                            <select asp-for="Experience" class="form-control">
+                                                <option value="">-- Chọn yêu cầu kinh nghiệm --</option>
+                                                <option value="Không yêu cầu kinh nghiệm">Không yêu cầu kinh nghiệm</option>
+                                                <option value="1 năm kinh nghiệm">1 năm kinh nghiệm</option>
+                                                <option value="2 năm kinh nghiệm">2 năm kinh nghiệm</option>
+                                                <option value="3 năm kinh nghiệm">3 năm kinh nghiệm</option>
+                                                <option value="4 năm kinh nghiệm">4 năm kinh nghiệm</option>
+                                                <option value="5 năm kinh nghiệm">5 năm kinh nghiệm</option>
+                                                <option value="Trên 5 năm kinh nghiệm">Trên 5 năm kinh nghiệm</option>
+                                            </select>
+                                            <span asp-validation-for="Experience" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pr-0">
+                                        <div class="form-group">
+                                            <label class="control-label">Mức lương</label>
+                                            <input asp-for="SalaryMin" class="form-control" placeholder="10.000.000" />
+                                            <span asp-validation-for="SalaryMin" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-0 pr-0">
+                                        <div class="form-group">
+                                            <label class="control-label"></label>
+                                            <input asp-for="SalaryMax" class="form-control" placeholder="25.000.000" />
+                                            <span asp-validation-for="SalaryMax" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-0">
+                                        <div class="form-group">
+                                            <label class="control-label"></label>
+                                            <select asp-for="SalaryUnit" class="form-control">
+                                                <option value="VND">VND</option>
+                                                <option value="$">USD</option>
+                                            </select>
+                                            <span asp-validation-for="SalaryUnit" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label class="control-label">Giờ làm việc <i>(Giờ)</i></label>
+                                            <input asp-for="WorkTime" class="form-control" placeholder="40h" />
+                                            <span asp-validation-for="WorkTime" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-0">
+                                        <div class="form-group">
+                                            <label class="control-label">Hạn Nộp</label>
+                                            <input type="date" asp-for="DealineForSubmission" class="form-control" placeholder="20/12/2020" />
+                                            <span asp-validation-for="DealineForSubmission" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Địa chỉ làm việc</label>
+                                            <input asp-for="Address" class="form-control" placeholder="Hải Châu, Đà Nẵng" />
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Đăng Tin" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('#post__content-create').trumbowyg({
+                btnsDef: {
+                    // Create a new dropdown
+                    image: {
+                        dropdown: ['insertImage', 'upload'],
+                        ico: 'insertImage'
+                    }
+                },
+                // Redefine the button pane
+                btns: [
+                    ['viewHTML'],
+                    ['formatting'],
+                    ['strong', 'em', 'del'],
+                    ['superscript', 'subscript'],
+                    ['link'],
+                    ['image'], // Our fresh created dropdown
+                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                    ['unorderedList', 'orderedList'],
+                    ['horizontalRule'],
+                    ['removeformat'],
+                    ['fullscreen']
+                ],
+                plugins: {
+                    // Add imagur parameters to upload plugin for demo purposes
+                    upload: {
+                        serverPath: 'https://api.imgur.com/3/image',
+                        fileFieldName: 'image',
+                        headers: {
+                            'Authorization': 'Client-ID e6f24e39952db0d'
+                        },
+                        urlPropertyName: 'data.link'
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        function previewFile(input) {
+            var file = $("input[type=file]").get(0).files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function () {
+                    $("#previewImg").attr("src", reader.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+}

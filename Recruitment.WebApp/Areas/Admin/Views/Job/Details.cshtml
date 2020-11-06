@@ -1,0 +1,125 @@
+﻿@model Recruitment.Application.MJob.JobResponse
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Chi tiết vị trí ứng tuyển</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <dl class="row">
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Position)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Position)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.ApplicationEmail)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.ApplicationEmail)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Slug)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Slug)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.JobDetail)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.JobDetail)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Amount)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Amount)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Experience)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Experience)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.SalaryMin)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.SalaryMin)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.SalaryMax)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.SalaryMax)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.SalaryUnit)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.SalaryUnit)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.WorkTime)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.WorkTime)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Address)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Address)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.DealineForSubmission)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.DealineForSubmission)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.CreatedOn)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.CreatedOn)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.UpdatedOn)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.UpdatedOn)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.IsActive)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.IsActive)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="~/client/assets/img/@Model.JobImage" style="width: 100%"/>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

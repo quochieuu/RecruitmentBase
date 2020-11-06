@@ -1,0 +1,46 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Đăng nhập admin";
+    Layout = "~/Areas/Admin/Views/Shared/_RegisterLogin.cshtml";
+}
+<div class="login-page">
+    <div class="container">
+        <div class="login-page-container">
+            <div class="login-logo">
+                <h3>Đăng Nhập</h3>
+            </div>
+            <form method="post" asp-action="login" asp-controller="account" asp-area="admin" class="loginform">
+                @Html.ValidationMessage("invalid_account", new { @class = "text-danger mb-10" })
+                <div class="formgr">
+                    <input type="text" name="Email" class="login-email inp" placeholder="Email hoặc số điện thoại">
+                </div>
+                <div class="formgr">
+                    <input type="password" name="Password" class="login-password inp" placeholder="Mật khẩu">
+                </div>
+                <button type="submit" class="btnlogin">Đăng Nhập</button>
+                <div class="formgr formgr2">
+                    <label>
+                        <input type="checkbox" name="RememberMe" class="rememberpass">
+                        <span>Nhớ mật khẩu</span>
+                    </label>
+                    <label class="lbright">
+                        <span>
+                            <a href="#">Quên mật khẩu</a>
+                        </span>
+                    </label>
+                </div>
+                <div class="or-sec">
+                    <p>hoặc</p>
+                </div>
+
+
+
+                <div class="formgr formgr-last">
+                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Tạo tài khoản mới</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

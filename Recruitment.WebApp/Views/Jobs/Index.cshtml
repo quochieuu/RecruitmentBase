@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Recruitment.Data.Entities.Job>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DealineForSubmission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DealineForSubmission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

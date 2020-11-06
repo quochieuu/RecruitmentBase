@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Recruitment.Data.Entities.AppRole>
+
+@{
+    ViewBag.Title = "List of roles";
+}
+
+@section Scripts {
+    <script>
+        function confirmDelete(uniqueId, isTrue) {
+
+            var deleteSpan = 'deleteSpan_' + uniqueId;
+            var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+            if (isTrue) {
+                $('#' + deleteSpan).hide();
+                $('#' + confirmDeleteSpan).show();
+            } else {
+                $('#' + deleteSpan).show();
+                $('#' + confirmDeleteSpan).hide();
+            }
+        }
+    </script>
+}
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">List of roles</h4>
+                        <a class="btn btn-primary btn-round ml-auto" asp-area="admin" asp-controller="auth" asp-action="create-role">
+                            <i class="fa fa-plus"></i>
+                            Create New
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            <b>@Html.DisplayFor(modelItem => item.Name)</b><br />
+                                            <i>ID: @item.Id</i>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Administration" asp-action="EditUsersInRole"
+                                               asp-route-roleId="@item.Id">
+                                                Add or remove users from this role
+                                            </a> |
+                                            <a asp-controller="Administration" asp-action="EditRole" asp-route-id="@item.Id">Edit</a> |
+                                            <form asp-action="DeleteRole" asp-route-id="@item.Id" method="post">
+                                                <span id="confirmDeleteSpan_@item.Id" style="display:none">
+                                                    <span>Are you sure you want to delete?</span>
+                                                    <button type="submit" class="btn btn-danger">Yes</button>
+                                                    <a href="#" class="btn btn-primary"
+                                                       onclick="confirmDelete('@item.Id', false)">No</a>
+                                                </span>
+
+                                                <span id="deleteSpan_@item.Id">
+                                                    <a href="#" onclick="confirmDelete('@item.Id', true)">Delete</a>
+                                                </span>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

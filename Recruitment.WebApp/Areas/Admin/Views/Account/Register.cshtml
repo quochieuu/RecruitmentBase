@@ -1,0 +1,48 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewBag.Title = "Đăng ký admin";
+    Layout = "~/Areas/Admin/Views/Shared/_RegisterLogin.cshtml";
+}
+<div class="login-page-wrap">
+    <div class="login-page-container reg-page-cont">
+        <div class="login-logo">
+            <h3>Đăng Ký</h3>
+        </div>
+        <form method="post" asp-action="Register" class="loginform">
+            @Html.ValidationMessage("invalid_account", new { @class = "text-danger mb-10" })
+            <div class="formgr">
+                <input type="text" name="LastName" class="inp reg-name" placeholder="Họ lót">
+            </div>
+            <div class="formgr">
+                <input type="text" name="FirstName" class="inp reg-name" placeholder="Tên">
+            </div>
+            <div class="formgr">
+                <input type="email" name="Email" class="inp reg-email" placeholder="Email">
+            </div>
+            <div class="formgr">
+                <input type="password" name="Password" class="inp reg-pass" placeholder="Mật khẩu">
+            </div>
+            <div class="formgr">
+                <input type="password" name="ConfirmPassword" class="inp reg-pass" placeholder="Nhập lại mật khẩu">
+            </div>
+            <div class="formgr">
+                <label>
+                    <input type="checkbox" name="" class="rememberpass">
+                    <span>Tôi đồng ý với điều khoản</span>
+                </label>
+            </div>
+            <div class="formgr">
+                <button type="submit" class="btnlogin btnreg">Đăng ký</button>
+            </div>
+            <div class="formgr formgr-last">
+                <span>
+                    Bạn đã có tài khoản?
+                    <a asp-controller="Account" asp-action="Login">Đăng Nhập</a>
+                </span>
+
+            </div>
+        </form>
+    </div>
+</div>
+

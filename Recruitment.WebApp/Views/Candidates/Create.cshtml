@@ -1,0 +1,54 @@
+﻿@model Recruitment.Data.Entities.Candidate
+@using Microsoft.AspNetCore.Identity
+@using Recruitment.Data.Entities
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    ViewData["Title"] = "Ứng tuyển vị trí việc làm";
+    var user = await UserManager.GetUserAsync(User);
+}
+<div class="searched-jobs">
+    <div class="row">
+        <h1 style="font-family: Roboto, sans-serif; font-size: 20px;">Ứng tuyển vị trí việc làm</h1>
+        <div class="col-md-12" style="margin-bottom: 10px; width:70%">
+            <form asp-area="" asp-controller="Candidates" asp-action="Create" method="post" enctype="multipart/form-data">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" style="display: flex; margin-bottom: 10px;">
+                        <label asp-for="Name" class="control-label" style="flex: 5; padding: 7px;"></label>
+                        <input asp-for="Name" value="@user.FullName" class="form-control" style="flex: 10; border: 0; padding: 8px 10px; border-radius: 5px; box-shadow: 2px 2px 6px 0px #cccccc2b;" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="display: flex; margin-bottom: 10px;">
+                        <label asp-for="Email" class="control-label" style="flex: 5; padding: 7px;"></label>
+                        <input asp-for="Email" value="@user.Email" class="form-control" style="flex: 10; border: 0; padding: 8px 10px; border-radius: 5px; box-shadow: 2px 2px 6px 0px #cccccc2b;" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="display: flex; margin-bottom: 10px;">
+                        <label asp-for="Phone" class="control-label" style="flex: 5; padding: 7px;"></label>
+                        <input asp-for="Phone" value="@user.PhoneNumber" class="form-control" style="flex: 10; border: 0; padding: 8px 10px; border-radius: 5px; box-shadow: 2px 2px 6px 0px #cccccc2b;" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="display: flex; margin-bottom: 10px;">
+                        <label asp-for="Introduction" class="control-label" style="flex: 5; padding: 7px;"></label>
+                        <textarea asp-for="Introduction" class="form-control" style="height: 100px;flex: 10; border: 0; padding: 8px 10px; border-radius: 5px; box-shadow: 2px 2px 6px 0px #cccccc2b;"></textarea>
+                        <span asp-validation-for="Introduction" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="display: flex; margin-bottom: 10px;">
+                        <label asp-for="Resume" class="control-label" style="flex: 5; padding: 7px;"></label>
+                        <input type="file" name="Resume" class="form-control" style="flex: 10; border: 0; padding: 8px 10px; border-radius: 5px; box-shadow: 2px 2px 6px 0px #cccccc2b;"
+                               accept=".doc, .docx, .pdf" />
+                        <span asp-validation-for="Resume" class="text-danger"></span>
+                    </div>
+
+                    <input hidden="hidden" asp-for="CandicateId" class="form-control" value="@user.Id" />
+
+                <div class="form-group" style="display: flex; margin-bottom: 10px;">
+                    <input type="submit" value="Ứng Tuyển Ngay" class="search-buttons" />
+                </div>
+                }
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Recruitment.Application.MCandidate.CandidateResponse>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Danh sách ứng tuyển</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Introduction)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Candicate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Job)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <b>@item.Name</b> <br/>
+                                            <i>@Html.DisplayFor(modelItem => item.Email)</i> <br/>
+                                            <i>@Html.DisplayFor(modelItem => item.Phone)</i>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Introduction)
+                                            <i><b>
+                                                   <a href="#">@item.Resume</a>    
+                                            </b></i>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Candicate.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Job.Position)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
