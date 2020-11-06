@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Application", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Api", "Recruitment.Api\Recruitment.Api.csproj", "{100B8895-080A-4D6F-B9B6-5B292499B919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruitment.Common", "Recruitment.Common\Recruitment.Common.csproj", "{7364556C-F207-4B5C-A51E-F14C5CB87AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Common", "Recruitment.Common\Recruitment.Common.csproj", "{7364556C-F207-4B5C-A51E-F14C5CB87AD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7E9FBBA-96BB-448F-9DE8-C35F06AD6B64}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
