@@ -31,11 +31,20 @@ namespace Recruitment.WebApp.Controllers
         [Route("index")]
         [Route("")]
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var response = await _jobApiClient.GetAll();
 
             var model = JsonConvert.DeserializeObject<List<JobResponse>>(response);
+
+            // Thêm chức năng tìm kiếm ngoài trang chủ
+            var jobs = from m in _context.JobJobs
+                          select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                jobs = jobs.Where(s => s.Position.Contains(searchString));
+            }
 
             return View(model.OrderByDescending(p => p.CreatedOn));
         }

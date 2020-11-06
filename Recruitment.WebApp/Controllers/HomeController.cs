@@ -24,10 +24,20 @@ namespace Recruitment.WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            ViewBag.CountListJob = _context.JobJobs.Where(j => j.IsActive == true).Count();
-            ViewBag.ListJob = _context.JobJobs.Where(j => j.IsActive == true).OrderByDescending(p => p.CreatedOn).ToList();
+            // Thêm chức năng tìm kiếm ngoài trang chủ
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ViewBag.ListJob = _context.JobJobs.Where(s => s.Position.Contains(searchString) && s.IsActive == true).OrderByDescending(p => p.CreatedOn).ToList();
+                ViewBag.CountListJob = _context.JobJobs.Where(j => j.Position.Contains(searchString) && j.IsActive == true).Count();
+            } else
+            {
+                ViewBag.ListJob = _context.JobJobs.Where(j => j.IsActive == true).OrderByDescending(p => p.CreatedOn).ToList();
+                ViewBag.CountListJob = _context.JobJobs.Where(j => j.IsActive == true).Count();
+            }
+            
+            
             return View();
         }
 
