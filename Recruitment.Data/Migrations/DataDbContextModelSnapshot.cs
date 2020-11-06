@@ -103,6 +103,31 @@ namespace Recruitment.Data.Migrations
                         {
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
+                        },
+                        new
+                        {
+                            UserId = new Guid("157b9908-7d9c-4d3c-ad32-a15db858ac34"),
+                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
+                        },
+                        new
+                        {
+                            UserId = new Guid("be6c06a9-e0c7-4d63-bd24-5f3ece98ebc0"),
+                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
+                        },
+                        new
+                        {
+                            UserId = new Guid("041684eb-cf97-40c6-881c-b766ae9c416a"),
+                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
+                        },
+                        new
+                        {
+                            UserId = new Guid("d7b7ce9e-f39f-4fea-9f2a-487a5355fbe9"),
+                            RoleId = new Guid("f52734c6-4614-4bc8-894a-8feeab71bef0")
+                        },
+                        new
+                        {
+                            UserId = new Guid("9bc1bf33-d875-42b2-a39e-b0cfc3fb6f2c"),
+                            RoleId = new Guid("f52734c6-4614-4bc8-894a-8feeab71bef0")
                         });
                 });
 
@@ -160,10 +185,18 @@ namespace Recruitment.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "b543677c-2a4b-4723-ac45-df5b219e7c0f",
+                            ConcurrencyStamp = "e09ce747-947c-4f0f-bead-f55a4069aa45",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = new Guid("f52734c6-4614-4bc8-894a-8feeab71bef0"),
+                            ConcurrencyStamp = "4a4465c8-45b5-4445-81b5-505640d75736",
+                            Description = "Recruitment role",
+                            Name = "Recruitment",
+                            NormalizedName = "RECRUITMENT"
                         });
                 });
 
@@ -266,21 +299,121 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c1356d9c-0017-4120-84b1-08ca464a1d31",
-                            Email = "jobsearch@gmail.com",
+                            ConcurrencyStamp = "38f86793-6d9d-4778-8d6f-8feb66bddcf2",
+                            Email = "quochieu@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Hiếu",
                             FullName = "Hồ Quốc Hiếu",
                             LastName = "Hồ Quốc",
                             LockoutEnabled = false,
-                            NormalizedEmail = "JOBSEARCH@GMAIL.COM",
-                            NormalizedUserName = "JOBSEARCH@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDOVdaPulWXZDUl/uoaMczZwLALO6rjipV3VGc6UuJDdTS7ZeTn5ueWnw0UFz+8zgQ==",
+                            NormalizedEmail = "QUOCHIEU@GMAIL.COM",
+                            NormalizedUserName = "QUOCHIEU@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGtJMAJDVg4TayMQ5nKGyvQZ2Z4RzfhDbJFJQUB5P3nLpjPOxHPOyYGRg7QLLANa1Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
-                            UrlAvatar = "/Image/Users/Avarta1.png",
-                            UserName = "jobsearch@gmail.com"
+                            UrlAvatar = "client/assets/img/avt1.png",
+                            UserName = "quochieu@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("157b9908-7d9c-4d3c-ad32-a15db858ac34"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f872a1a5-4d33-4b17-bbbf-8f6f2a6c69f7",
+                            Email = "lehieu@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Hiếu",
+                            FullName = "Nguyễn Phước Lê",
+                            LastName = "Nguyễn Phước Lê",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "LEHIEU@GMAIL.COM",
+                            NormalizedUserName = "LEHIEU@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFDU/sWiW4YEnZZOd7ZCfput+Js7gft94vhhKJs24TOQ3fm+jJhc2U8dkMhvGU2itw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UrlAvatar = "client/assets/img/avt2.png",
+                            UserName = "lehieu@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("be6c06a9-e0c7-4d63-bd24-5f3ece98ebc0"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "539eedd0-ccef-46d0-997b-60c0c40db81e",
+                            Email = "locpv@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Lộc",
+                            FullName = "Phan Văn Lộc",
+                            LastName = "Phan Văn",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "LOCPV@GMAIL.COM",
+                            NormalizedUserName = "LOCPV@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAECWRVipKuYhGdi9bfDjX5B/jeTzpsolVIM24LUlTDmuIYUjc/OmRh5wefe8fQkq5Ww==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UrlAvatar = "client/assets/img/avt3.png",
+                            UserName = "locpv@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("041684eb-cf97-40c6-881c-b766ae9c416a"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "daa19e2c-dee0-4f22-b54d-291745a50fdc",
+                            Email = "giahuy@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Huy",
+                            FullName = "Huỳnh Gia Huy",
+                            LastName = "Huỳnh Gia",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "GIAHUY@GMAIL.COM",
+                            NormalizedUserName = "GIAHUY@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEqOJpNhlemJNQsZjoqd6f4Ok8PFu9CCtflJVxQNGpMxab5vQDGCg0rgPGbkHmFfuA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UrlAvatar = "client/assets/img/avt4.png",
+                            UserName = "giahuy@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("d7b7ce9e-f39f-4fea-9f2a-487a5355fbe9"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "993944e3-c8e7-47de-ba28-7781581a54b0",
+                            Email = "vanlong@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Long",
+                            FullName = "Sằn Văn Long",
+                            LastName = "Sằn Văn",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "VANLONG@GMAIL.COM",
+                            NormalizedUserName = "VANLONG@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI1tcf8JUegR2jLLIVO182+FQLL9oGmi22kxN88iOvaDjoCtzf9ubo1AUo3lDIYFRQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UrlAvatar = "client/assets/img/avt5.png",
+                            UserName = "vanlong@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("9bc1bf33-d875-42b2-a39e-b0cfc3fb6f2c"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ba8f7265-638b-4f53-b88d-3b32e92109c5",
+                            Email = "ankhang@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Khang",
+                            FullName = "Đỗ Phúc An Khang",
+                            LastName = "Đỗ Phúc An Khang",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ANKHANG@GMAIL.COM",
+                            NormalizedUserName = "ANKHANG@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK5ufmVYv2CsuZ2MVbA2HfcAoAZ5hOtaDkOV+QuKQ5Gy9Pnqu8D32QTuhROGsbnunA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UrlAvatar = "client/assets/img/avt6.png",
+                            UserName = "ankhang@gmail.com"
                         });
                 });
 
