@@ -64,7 +64,7 @@ input.inp{padding:11px 17px;border:1px solid #e1e1e1;margin-bottom:10px;border-r
                 </div>
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <img class="user-profile" src="~/client/assets/img/@user.UrlAvatar" alt="">
+                    <img class="user-profile" src="~/@user.UrlAvatar" alt="">
                     <div class="user-name">@user.FirstName @user.LastName</div>
                     <span style="padding: 0 15px">|</span>
                     <a asp-controller="Account" asp-action="Logout">Đăng xuất</a>
