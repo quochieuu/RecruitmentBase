@@ -10,7 +10,7 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="~/AtlantisAdmin/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                    <img src="~/@user.UrlAvatar" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     @if (SignInManager.IsSignedIn(User))
@@ -33,7 +33,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#edit">
+                                <a asp-area="Admin" asp-controller="Administration" asp-action="EditUser" asp-route-id="@user.Id">
                                     <span class="link-collapse">Edit Profile</span>
                                 </a>
                             </li>
