@@ -150,6 +150,16 @@
                                             <span asp-validation-for="Address" class="text-danger"></span>
                                         </div>
                                     </div>
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label class="control-label" style="display: block;">Trạng Thái</label>
+                                            <input type="radio" asp-for="IsActive" class="form-control" value="true" style="float: left; display: inline-block; width: 10px; padding-right: 10px;"/>
+                                            <label style="float: left; display: inline-block; font-weight: 400!important; padding-left: 10px; margin-top: -4px;">Active</label>
+                                            <input type="radio" asp-for="IsActive" class="form-control" value="false" style="float: left; display: inline-block; width: 10px; padding-right: 10px;margin-left: 15px;"/>
+                                            <label style="float: left; display: inline-block; font-weight: 400!important; padding-left: 10px; margin-top: -4px;">InActive</label>
+                                            <span asp-validation-for="IsActive" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

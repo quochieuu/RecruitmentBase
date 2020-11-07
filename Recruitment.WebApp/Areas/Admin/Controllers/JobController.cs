@@ -169,7 +169,7 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 		{
 			try
 			{
-				request.IsActive = true;
+				//request.IsActive = true;
 				request.UpdatedOn = DateTime.Now;
 				// TODO: Add insert logic here 
 				var response = await _jobApiClient.Update(request);
@@ -343,6 +343,18 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 				return RedirectToAction("index");
 			}
 		}
-	
-}
+
+		[HttpGet]
+		[Route("set-featured/{jobId}")]
+		public async Task<IActionResult> SetFeatured(Guid jobId)
+		{
+			var job = await _context.JobJobs.FindAsync(jobId);
+
+			job.IsActive = true;
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction(nameof(Index));
+		}
+
+	}
 }
