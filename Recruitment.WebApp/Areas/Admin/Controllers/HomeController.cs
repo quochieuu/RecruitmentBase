@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +46,64 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
                     new FileDetails { Name = item.Name, Path = item.PhysicalPath });
             }
             return View(model);
+        }
+
+
+        [Route("downloadzip")]
+        public FileResult DownloadZip(string[] filenames)
+        {
+            var webRoot = Path.Combine(
+                           Directory.GetCurrentDirectory(),
+                           "wwwroot");
+            var fileName = "resources" + ".zip";
+            var tempoutput = webRoot + "/resume/" + fileName;
+
+            using (ZipOutputStream zipOutputStream = new ZipOutputStream(System.IO.File.Create(tempoutput)))
+            {
+                zipOutputStream.SetLevel(9);
+
+                byte[] buffer = new byte[1000000000];
+
+                var fileList = new List<string>();
+
+                foreach (var file in filenames)
+                {
+                    fileList.Add(webRoot + "/resume/" + file);
+                }
+
+
+
+                for (int i = 0; i < fileList.Count; i++)
+                {
+                    ZipEntry entry = new ZipEntry(Path.GetFileName(fileList[i]));
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    zipOutputStream.PutNextEntry(entry);
+
+                    using FileStream fileStream = System.IO.File.OpenRead(fileList[i]);
+                    int sourceBytes;
+                    do
+                    {
+                        sourceBytes = fileStream.Read(buffer, 0, buffer.Length);
+                        zipOutputStream.Write(buffer, 0, sourceBytes);
+                    } while (sourceBytes > 0);
+                }
+                zipOutputStream.Finish();
+                zipOutputStream.Flush();
+                zipOutputStream.Close();
+            }
+            byte[] finalResult = System.IO.File.ReadAllBytes(tempoutput);
+            if (System.IO.File.Exists(tempoutput))
+            {
+                System.IO.File.Delete(tempoutput);
+            }
+
+            if (finalResult == null || !finalResult.Any())
+            {
+                throw new Exception(String.Format("nothing found!"));
+            }
+
+            return File(finalResult, "application/zip", fileName);
         }
     }
 }

@@ -24,7 +24,7 @@
                                 });
                             </script>
                         }
-                        <form asp-action="DownloadZip" method="post">
+                        <form asp-area="Admin" asp-controller="Home" asp-action="DownloadZip" method="get">
                             <input type="submit" class="btn btn-primary" value="Download Selected" onclick="return confirm('Xác nhận tải các phần vừa chọn ?') " />
                             <table class="table table-bordered table-striped">
                                 <thead>
@@ -33,7 +33,6 @@
                                             <input type="checkbox" id="checkall" />
                                         </th>
                                         <th>File name</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,17 +45,6 @@
                                             </td>
                                             <td>
                                                 @item.Name
-                                            </td>
-                                            <td>
-                                                <a asp-action="Download"
-                                                   asp-route-filename="@item.Name">
-                                                    Download
-                                                </a>
-                                                <span>   -  </span>
-                                                <a asp-action="Delete"
-                                                   asp-route-filename="@item.Name">
-                                                    Xóa
-                                                </a>
                                             </td>
                                         </tr>
                                     }
