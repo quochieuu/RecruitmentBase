@@ -58,8 +58,11 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 		{
 			try
 			{
-				// TODO: Add insert logic here 
-				var response = await _candidateApiClient.Create(request);
+				if(ModelState.IsValid)
+				{
+					// TODO: Add insert logic here 
+					var response = await _candidateApiClient.Create(request);
+				}
 
 				return RedirectToAction("Index");
 			}
@@ -87,8 +90,11 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 		{
 			try
 			{
-				// TODO: Add insert logic here 
-				var response = await _candidateApiClient.Update(request);
+				if(ModelState.IsValid)
+				{
+					// TODO: Add insert logic here 
+					var response = await _candidateApiClient.Update(request);
+				}
 
 				return RedirectToAction("Index");
 			}

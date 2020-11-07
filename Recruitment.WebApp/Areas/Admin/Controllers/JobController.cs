@@ -72,33 +72,37 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 		{
 			try
 			{
-				// Thêm ảnh vào wwwroot
-				var fileName = Path.GetFileName(JobImage.FileName);
-				var myUniqueFileName = Convert.ToString(Guid.NewGuid());
-				var fileExtension = Path.GetExtension(fileName);
-				var newFileName = String.Concat(myUniqueFileName, fileExtension);
-
-				var filepath =
-		new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "client/assets/img")).Root + $@"\{newFileName}";
-
-				using (FileStream fs = System.IO.File.Create(filepath))
+				if(ModelState.IsValid)
 				{
-					JobImage.CopyTo(fs);
-					fs.Flush();
-				}
+					// Thêm ảnh vào wwwroot
+					var fileName = Path.GetFileName(JobImage.FileName);
+					var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+					var fileExtension = Path.GetExtension(fileName);
+					var newFileName = String.Concat(myUniqueFileName, fileExtension);
 
-				var newImageName = newFileName;
-				request.JobImage = newImageName.ToString();
-				string year = DateTime.Now.ToString("yy");
-				string month = DateTime.Now.ToString("MM");
-				string seconds = DateTime.Now.ToString("ss");
-				string timespan = DateTime.Now.ToString("yyyyMMddHHmmss");
-				request.Slug = Helper.UpperToLower(Helper.ToUnsignString(request.Position)) + year + seconds;
-				request.CreatedOn = DateTime.Now;
-				request.IsActive = true;
-				request.Id = new Guid();
-				// TODO: Add insert logic here 
-				var response = await _jobApiClient.Create(request);
+					var filepath =
+			new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "client/assets/img")).Root + $@"\{newFileName}";
+
+					using (FileStream fs = System.IO.File.Create(filepath))
+					{
+						JobImage.CopyTo(fs);
+						fs.Flush();
+					}
+
+					var newImageName = newFileName;
+					request.JobImage = newImageName.ToString();
+					string year = DateTime.Now.ToString("yy");
+					string month = DateTime.Now.ToString("MM");
+					string seconds = DateTime.Now.ToString("ss");
+					string timespan = DateTime.Now.ToString("yyyyMMddHHmmss");
+					request.Slug = Helper.UpperToLower(Helper.ToUnsignString(request.Position)) + year + seconds;
+					request.CreatedOn = DateTime.Now;
+					request.IsActive = true;
+					request.Id = new Guid();
+					// TODO: Add insert logic here 
+					var response = await _jobApiClient.Create(request);
+				}
+				
 
 				return RedirectToAction("Index");
 			}
@@ -169,10 +173,13 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 		{
 			try
 			{
-				//request.IsActive = true;
-				request.UpdatedOn = DateTime.Now;
-				// TODO: Add insert logic here 
-				var response = await _jobApiClient.Update(request);
+				if(ModelState.IsValid)
+				{
+					//request.IsActive = true;
+					request.UpdatedOn = DateTime.Now;
+					// TODO: Add insert logic here 
+					var response = await _jobApiClient.Update(request);
+				}
 
 				return RedirectToAction("Index");
 			}
