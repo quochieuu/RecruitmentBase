@@ -350,7 +350,14 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 		{
 			var job = await _context.JobJobs.FindAsync(jobId);
 
-			job.IsActive = true;
+			if(job.IsActive == true)
+			{
+				job.IsActive = false;
+			} else
+			{
+				job.IsActive = true;
+			}
+			
 			await _context.SaveChangesAsync();
 
 			return RedirectToAction(nameof(Index));

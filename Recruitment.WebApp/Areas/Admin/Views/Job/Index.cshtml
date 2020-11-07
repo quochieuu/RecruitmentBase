@@ -40,7 +40,6 @@
                                         <a class="dropdown-item" asp-action="ChangeImage" asp-route-id="@item.Id">Thay đổi ảnh</a>
                                         <a class="dropdown-item" asp-action="Update" asp-route-id="@item.Id">Chỉnh sửa</a>
                                         <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Chi Tiết</a>
-                                        <a class="dropdown-item" asp-action="SetFeatured" asp-route-jobId="@item.Id">Active this job</a>
                                         <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id" onclick="alert('Xác nhận xóa vị trí tuyển dụng này?')">Xóa</a>
                                     </div>
                                 </div>
@@ -52,13 +51,22 @@
                                 <div class="job-card-subtitle">
                                     Salary: @item.SalaryMin.ToString("G29") - @item.SalaryMax.ToString("G29") (@item.SalaryUnit) <br />
                                     Work Place: @item.Address <br />
-                                    Deadline: @item.DealineForSubmission.ToString("dd/MM/yyyy") - Status:  @if (item.IsActive)
-                                    {<span style='color:blue;'>Active</span>}
+                                    Deadline: @item.DealineForSubmission.ToString("dd/MM/yyyy") - Status:
+                                    @if (item.IsActive)
+                                    {
+                                        <a asp-action="SetFeatured" asp-route-jobId="@item.Id" onclick="alert('Are you sure to switch Active to InActive?')" title="Click to switch status">
+                                            <span style='color:blue;'>Active</span>
+                                        </a>
+                                    }
                                     else
-                                    {<span style='color:red;'>InActive</span>}<br />
+                                    {
+                                        <a asp-action="SetFeatured" asp-route-jobId="@item.Id" onclick="alert('Are you sure to switch InActive to Active?')" title="Click to switch status">
+                                            <span style='color:red;'>InActive</span>
+                                        </a>
+                                    }<br />
 
 
-                                </div>
+                                    </div>
 
 
                                 <div class="job-card-buttons">
