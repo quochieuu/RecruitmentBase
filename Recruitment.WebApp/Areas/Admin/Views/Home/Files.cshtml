@@ -1,0 +1,73 @@
+﻿@model Recruitment.WebApp.Areas.Admin.ViewModel.FilesViewModel
+
+
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">List Resumes</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @section Scripts {
+                            <script>
+                                $(function () {
+                                    $('#checkall').change(function () {
+                                        if ($(this).prop("checked") == true) {
+                                            $("input[name=filenames]").prop("checked", true);
+                                        } else {
+                                            $("input[name=filenames]").prop("checked", false);
+                                        }
+                                    });
+                                });
+                            </script>
+                        }
+                        <form asp-action="DownloadZip" method="post">
+                            <input type="submit" class="btn btn-primary" value="Download Selected" onclick="return confirm('Xác nhận tải các phần vừa chọn ?') " />
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" id="checkall" />
+                                        </th>
+                                        <th>File name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.Files)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="filenames" value="@item.Name" />
+                                            </td>
+                                            <td>
+                                                @item.Name
+                                            </td>
+                                            <td>
+                                                <a asp-action="Download"
+                                                   asp-route-filename="@item.Name">
+                                                    Download
+                                                </a>
+                                                <span>   -  </span>
+                                                <a asp-action="Delete"
+                                                   asp-route-filename="@item.Name">
+                                                    Xóa
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
