@@ -24,13 +24,26 @@ namespace Recruitment.WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, string place, string exp, string language)
         {
             // Thêm chức năng tìm kiếm ngoài trang chủ
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString) || !String.IsNullOrEmpty(place) || !String.IsNullOrEmpty(exp) || !String.IsNullOrEmpty(language))
             {
-                ViewBag.ListJob = _context.JobJobs.Where(s => s.Position.Contains(searchString) && s.IsActive == true).OrderByDescending(p => p.CreatedOn).ToList();
-                ViewBag.CountListJob = _context.JobJobs.Where(j => j.Position.Contains(searchString) && j.IsActive == true).Count();
+                ViewBag.ListJob = _context.JobJobs
+                    .Where(s => s.Position.Contains(searchString) || 
+                    s.Experience.Contains(exp) ||
+                    s.Position.Contains(language) ||
+                    s.Address.Contains(place) && s.IsActive == true)
+                    .OrderByDescending(p => p.CreatedOn)
+                    .ToList();
+
+                ViewBag.CountListJob = _context.JobJobs
+                    .Where(j => j.Position.Contains(searchString) ||
+                    j.Experience.Contains(exp) ||
+                    j.Position.Contains(language) ||
+                    j.Address.Contains(place) && j.IsActive == true) 
+                    .Count();
+
             } else
             {
                 ViewBag.ListJob = _context.JobJobs.Where(j => j.IsActive == true).OrderByDescending(p => p.CreatedOn).ToList();
