@@ -65,7 +65,7 @@
                     </span>
                     <h4 class="text-section">Managements</h4>
                 </li>
-                
+
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
                     <li class="nav-item">
@@ -115,6 +115,40 @@
                                 <li>
                                     <a href="/admin/auth/list-roles">
                                         <span class="sub-item">List Roles</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Recruitment"))
+                {
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Jobs</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="/admin/jobs/create">
+                                        <span class="sub-item">New Job</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/jobs">
+                                        <span class="sub-item">List Jobs</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/candidates">
+                                        <span class="sub-item">List Candidates</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/home/resume">
+                                        <span class="sub-item">List Resumes</span>
                                     </a>
                                 </li>
                             </ul>
