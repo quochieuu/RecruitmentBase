@@ -20,6 +20,7 @@ using Recruitment.Application.MJob;
 using Recruitment.Data.DataContext;
 using Recruitment.Data.Entities;
 using Recruitment.WebApp.Service.CandidateService;
+using Recruitment.WebApp.Service.FeedbackService;
 using Recruitment.WebApp.Service.JobService;
 
 namespace Recruitment.WebApp
@@ -40,6 +41,7 @@ namespace Recruitment.WebApp
             // Add DI
             services.AddTransient<IJobApiClient, JobApiClient>();
             services.AddTransient<ICandidateApiClient, CandidateApiClient>();
+            services.AddTransient<IFeedbackApiClient, FeedbackApiClient>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {

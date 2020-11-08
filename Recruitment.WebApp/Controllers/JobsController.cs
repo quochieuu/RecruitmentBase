@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Recruitment.Application.MFeedback;
 using Recruitment.Application.MJob;
 using Recruitment.Data.DataContext;
 using Recruitment.Data.Entities;
+using Recruitment.WebApp.Service.FeedbackService;
 using Recruitment.WebApp.Service.JobService;
 
 namespace Recruitment.WebApp.Controllers
@@ -20,11 +22,13 @@ namespace Recruitment.WebApp.Controllers
     {
         private readonly DataDbContext _context;
         private readonly IJobApiClient _jobApiClient;
+        private readonly IFeedbackApiClient _feedbackApiClient;
 
 
-        public JobsController(DataDbContext context, IJobApiClient jobApiClient)
+        public JobsController(DataDbContext context, IJobApiClient jobApiClient, IFeedbackApiClient feedbackApiClient)
         {
             _jobApiClient = jobApiClient;
+            _feedbackApiClient = feedbackApiClient;
             _context = context;
         }
 
@@ -50,7 +54,7 @@ namespace Recruitment.WebApp.Controllers
         }
 
         [Route("~/chi-tiet/{slug}")]
-        public async Task<IActionResult> Details(string slug)
+        public async Task<IActionResult> Details(string slug, FeedbackRequest request)
         {
             if (slug == null)
             {
@@ -59,6 +63,25 @@ namespace Recruitment.WebApp.Controllers
 
             var job = await _context.JobJobs
                 .FirstOrDefaultAsync(m => m.Slug == slug);
+
+            ViewBag.JobId = job.Id;
+
+            var comments = _context.Feedbacks.Where(d => d.JobId.Equals(job.Id)).ToList();
+            ViewBag.Comments = comments;
+
+            var ratings = _context.Feedbacks.Where(d => d.JobId.Equals(job.Id)).ToList();
+            if (ratings.Count() > 0)
+            {
+                var ratingSum = ratings.Sum(d => d.Rating);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
+            }
+            else
+            {
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
+            }
 
             ViewBag.RelativeJob = RelativeJobs(3, job.Id);
             if (job == null)
@@ -84,7 +107,6 @@ namespace Recruitment.WebApp.Controllers
             return _context.JobJobs.Take(top).Where(j => j.Id != id).ToList();
 
         }
-
 
     }
 }

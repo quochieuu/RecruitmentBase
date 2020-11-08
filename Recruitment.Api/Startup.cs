@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Recruitment.Application.MCandidate;
+using Recruitment.Application.MFeedback;
 using Recruitment.Application.MJob;
 using Recruitment.Data.DataContext;
 
@@ -37,6 +38,7 @@ namespace Recruitment.Api
             // add DI
             services.AddTransient<IJobService, JobService>();
             services.AddTransient<ICandidateService, CandidateService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
 
             services.AddControllersWithViews();
         }
