@@ -54,7 +54,7 @@ namespace Recruitment.WebApp.Controllers
         }
 
         [Route("~/chi-tiet/{slug}")]
-        public async Task<IActionResult> Details(string slug, FeedbackRequest request)
+        public async Task<IActionResult> Details(string slug)
         {
             if (slug == null)
             {

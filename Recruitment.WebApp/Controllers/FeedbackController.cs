@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Recruitment.Application.MFeedback;
 using Recruitment.Data.DataContext;
 using Recruitment.WebApp.Service.FeedbackService;
@@ -31,19 +32,20 @@ namespace Recruitment.WebApp.Controllers
 
         [Route("feed")]
         [HttpPost]
-        public async Task<IActionResult> AddFeedback(FeedbackRequest request)
+        public async Task<IActionResult> AddFeedback(FeedbackRequest request, string slug)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+
                     request.Id = new Guid();
                     request.CommentOn = DateTime.Now;
                     var response = await _feedbackApiClient.Create(request);
 
 
                 }
-                return RedirectToAction("index");
+                return RedirectToAction("index", "home");
             }
 
             catch
