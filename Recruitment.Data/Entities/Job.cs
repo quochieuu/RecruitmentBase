@@ -38,6 +38,8 @@ namespace Recruitment.Data.Entities
         [Required(ErrorMessage = "Hãy chọn thời hạn nộp hồ sơ")]
         public DateTimeOffset DealineForSubmission { get; set; }     // Hạn cuối nộp đơn
 
+        //public List<JobFeedback> Feedbacks { set; get; }
+
         public DateTimeOffset CreatedOn { get; set; }
         public DateTimeOffset? UpdatedOn { get; set; }
         public bool IsActive { get; set; }

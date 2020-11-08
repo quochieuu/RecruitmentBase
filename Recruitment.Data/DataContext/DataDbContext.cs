@@ -32,6 +32,7 @@ namespace Recruitment.Data.DataContext
            
             modelBuilder.ApplyConfiguration(new Job_JobConfiguration());
             modelBuilder.ApplyConfiguration(new Job_CandidateConfiguration());
+            modelBuilder.ApplyConfiguration(new FeedbackConfiguration());
 
             //End: update: 04/08/2020
 
@@ -50,6 +51,7 @@ namespace Recruitment.Data.DataContext
 
         public DbSet<Job> JobJobs { get; set; }
         public DbSet<Candidate> JobCandidates { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }
 
