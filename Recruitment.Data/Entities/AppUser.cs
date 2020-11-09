@@ -7,7 +7,6 @@ namespace Recruitment.Data.Entities
 {
     public class AppUser : IdentityUser<Guid>
     {
-        public byte[] IdQrCode { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }

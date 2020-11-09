@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recruitment.Data.DataContext;
 
 namespace Recruitment.Data.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201109055713_InitialCreate3")]
+    partial class InitialCreate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,7 +187,7 @@ namespace Recruitment.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "6698dc8d-ea99-4189-bb0b-8cb3d74531d1",
+                            ConcurrencyStamp = "aacf95e0-cfde-49b0-b22d-eb24cb56f8ef",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -193,7 +195,7 @@ namespace Recruitment.Data.Migrations
                         new
                         {
                             Id = new Guid("f52734c6-4614-4bc8-894a-8feeab71bef0"),
-                            ConcurrencyStamp = "19e0076b-6254-4e75-bec6-190915267155",
+                            ConcurrencyStamp = "8160b68b-b789-4dea-bb0a-327502761be2",
                             Description = "Recruitment role",
                             Name = "Recruitment",
                             NormalizedName = "RECRUITMENT"
@@ -238,6 +240,9 @@ namespace Recruitment.Data.Migrations
 
                     b.Property<bool?>("Gender")
                         .HasColumnType("bit");
+
+                    b.Property<byte[]>("IdQrCode")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(50)")
@@ -296,7 +301,7 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "980d784e-50bf-4eb3-ac1c-b955a28ef590",
+                            ConcurrencyStamp = "b725f1ab-0c3f-4ec1-aaa9-3c604e17f42f",
                             Email = "quochieu@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Hiếu",
@@ -305,7 +310,7 @@ namespace Recruitment.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "QUOCHIEU@GMAIL.COM",
                             NormalizedUserName = "QUOCHIEU@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOVqxI5KNeq+rtN7r1hDAuKsTklboAOz0A0FYK5gUFzcOZg64kEF11+FDTA72NmbJA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMMDWpcE+FZyMY0PjZ53qkJGEfpW1NKCg2z77QubWcccBQcaUVy1am0xStlzHM3l+Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -316,7 +321,7 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("157b9908-7d9c-4d3c-ad32-a15db858ac34"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c01e0a88-418d-46b6-af26-fa05133264ef",
+                            ConcurrencyStamp = "9026e8dd-593e-4d44-abdd-90553d008ea3",
                             Email = "lehieu@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Hiếu",
@@ -325,7 +330,7 @@ namespace Recruitment.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LEHIEU@GMAIL.COM",
                             NormalizedUserName = "LEHIEU@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAED2YpV9MgzpfKg3bhmedF1yFVW6fWI7SnMc+HkfLmjLMcVbB6cFWRuPMAKHrEZUubA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELBw7MYdTa9TBTUb74lrG4fShFinUg6MNosxJmO8zRfJ/aa8L0n3mPqpePhkMIKsFA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -336,7 +341,7 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("be6c06a9-e0c7-4d63-bd24-5f3ece98ebc0"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "71a96eb5-9aef-4014-bf0a-a808bc49ba01",
+                            ConcurrencyStamp = "d7a8b6d6-14c5-4d64-b36e-659637ef4f0c",
                             Email = "locpv@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Lộc",
@@ -345,7 +350,7 @@ namespace Recruitment.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LOCPV@GMAIL.COM",
                             NormalizedUserName = "LOCPV@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEANySjvGshLFR9sgOKp0WZ9p2q72qSttQkP/6JnSHqL8v9wsZ7n6nylE8ipdTJEQbQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGKXVaEbkQa2J7qANeWZ0HSfOk7kfSpKNhj93Lx5WMkFTbHDJjlIwX/zvEtPLYff1w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -356,7 +361,7 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("041684eb-cf97-40c6-881c-b766ae9c416a"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a3925d3-b9dc-4f6d-802d-0a4563fde103",
+                            ConcurrencyStamp = "273b0215-aea5-4d34-91ce-ae5d55e44e7d",
                             Email = "giahuy@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Huy",
@@ -365,7 +370,7 @@ namespace Recruitment.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "GIAHUY@GMAIL.COM",
                             NormalizedUserName = "GIAHUY@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGhukC1Jyg4eZ//3byOYmp4HA7jIoAIyYzt0E0pT3XcluKLyc60dE7ZzYHT0B54qvg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELlKufroqiWCrjKJhnqp+5NmurJLIv+p5eKYFpz4KSXh81Qcorth/A3TibjdFQbj/g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -376,7 +381,7 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("d7b7ce9e-f39f-4fea-9f2a-487a5355fbe9"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "95c78d1f-1c8e-4ab0-bbaf-95dfb0bc0b39",
+                            ConcurrencyStamp = "da7cd195-0f81-4bf8-aca5-9422af54cb08",
                             Email = "vanlong@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Long",
@@ -385,7 +390,7 @@ namespace Recruitment.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "VANLONG@GMAIL.COM",
                             NormalizedUserName = "VANLONG@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMzaj86vPy1uVx5phMR28GSqPgWS1b+eSzFnLj6M9EXb22kmHUi5MFimvcXTpdRx7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENk7toWS2kaIXinU3AcQAStWQVezxYMsB0i6Ue10Ew65KNh5Ycoxu+wmL7KRB4Tsjg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -396,7 +401,7 @@ namespace Recruitment.Data.Migrations
                         {
                             Id = new Guid("9bc1bf33-d875-42b2-a39e-b0cfc3fb6f2c"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "262b766f-3ad7-4727-935b-3c8421898490",
+                            ConcurrencyStamp = "89fd09fa-0a21-44ec-b0a5-590f2f63ffd8",
                             Email = "ankhang@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Khang",
@@ -405,7 +410,7 @@ namespace Recruitment.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ANKHANG@GMAIL.COM",
                             NormalizedUserName = "ANKHANG@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKaPPEI2ojKyo7Lid+Cn8edJucaSXysnFQSflNF79QNitEReCZpU36nq+7Doq/Fsqw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBfiJTEUOSy0L+bgeD+ClmMJozk4erBzLtUcwZJNKHiOyGFrNXR7ZydwxT7Laa8WrQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -482,9 +487,6 @@ namespace Recruitment.Data.Migrations
 
                     b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");

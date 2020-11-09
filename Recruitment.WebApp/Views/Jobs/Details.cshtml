@@ -1,9 +1,7 @@
-﻿@model Recruitment.Data.Entities.Job
-
-@{
+﻿@{
     ViewData["Title"] = Model.Position;
 }
-    <link href="~/css/site2.css" rel="stylesheet" />
+<link href="~/css/site2.css" rel="stylesheet" />
 @{
     var comments = (IEnumerable<Recruitment.Data.Entities.Feedback>)ViewBag.Comments;
     var ratingSum = ViewBag.RatingSum;
@@ -84,7 +82,7 @@
                 </div>
             </div>
 
-            <br/>
+            <br />
             <h3>Bình luận</h3>
             <div>
                 <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
@@ -94,17 +92,18 @@
                 <hr />
                 <div class="row">
                     <div class="col-md-3">
-                        <i style="font-size: 11px;">@c.CommentOn</i>
-                        <br />
-                        @for (var i = 1; i <= c.Rating; i++)
-                        {
-                            <span class="starGlowN"></span>
-                        }
-                        @for (var i = (c.Rating + 1); i <= 5; i++)
-                        {
-                            <span class="starFadeN"></span>
-                        }
-                    </div>
+                        <b>@c.Name</b>
+                            <i style="font-size: 11px;">@c.CommentOn</i>
+                            <br />
+                            @for (var i = 1; i <= c.Rating; i++)
+                            {
+                                <span class="starGlowN"></span>
+                            }
+                            @for (var i = (c.Rating + 1); i <= 5; i++)
+                            {
+                                <span class="starFadeN"></span>
+                            }
+                        </div>
                     <div class="col-md-9" style="font-size: 12px;">
                         @Html.Raw(c.Comment)
 

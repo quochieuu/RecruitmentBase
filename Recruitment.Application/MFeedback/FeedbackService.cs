@@ -23,8 +23,11 @@ namespace Recruitment.Application.MFeedback
 			var feedback = new Feedback()
 			{
 				Comment = feedbackRequest.Comment,
+				Name = feedbackRequest.Name,
 				Rating = feedbackRequest.Rating,
 				CommentOn = feedbackRequest.CommentOn,
+				UserId = feedbackRequest.UserId,
+				CommentBy = feedbackRequest.CommentBy,
 				Job = feedbackRequest.Job,
 				JobId = feedbackRequest.JobId
 			};
@@ -51,8 +54,11 @@ namespace Recruitment.Application.MFeedback
 			{
 				Id = feedbackRequest.Id,
 				Comment = feedbackRequest.Comment,
+				Name = feedbackRequest.Name,
 				Rating = feedbackRequest.Rating,
+				UserId = feedbackRequest.UserId,
 				CommentOn = feedbackRequest.CommentOn,
+				CommentBy = feedbackRequest.CommentBy,
 				Job = feedbackRequest.Job,
 				JobId = feedbackRequest.JobId
 			};
@@ -69,8 +75,11 @@ namespace Recruitment.Application.MFeedback
 				{
 					Id = x.Id,
 					Comment = x.Comment,
+					Name = x.Name,
 					Rating = x.Rating,
+					UserId = x.UserId,
 					CommentOn = x.CommentOn,
+					CommentBy = x.CommentBy,
 					Job = x.Job,
 					JobId = x.JobId
 				}).ToListAsync();
