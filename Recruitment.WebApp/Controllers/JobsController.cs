@@ -65,6 +65,7 @@ namespace Recruitment.WebApp.Controllers
                 .FirstOrDefaultAsync(m => m.Slug == slug);
 
             ViewBag.JobId = job.Id;
+            ViewBag.JobSlug = job.Slug;
 
             var comments = _context.Feedbacks.Where(d => d.JobId.Equals(job.Id)).ToList();
             ViewBag.Comments = comments;

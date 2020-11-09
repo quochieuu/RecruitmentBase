@@ -10,6 +10,7 @@ using Recruitment.WebApp.Service.FeedbackService;
 
 namespace Recruitment.WebApp.Controllers
 {
+    [Route("feedback")]
     public class FeedbackController : Controller
     {
         private readonly DataDbContext _context;
@@ -34,18 +35,22 @@ namespace Recruitment.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFeedback(FeedbackRequest request, string slug)
         {
+            
             try
             {
+                var jod = _context.JobJobs.FirstOrDefault(j => j.Slug == slug);
+                var jodId = jod.Id;
+
                 if (ModelState.IsValid)
                 {
-
+                    
                     request.Id = new Guid();
                     request.CommentOn = DateTime.Now;
                     var response = await _feedbackApiClient.Create(request);
 
 
                 }
-                return RedirectToAction("index", "home");
+                return Redirect("~/chi-tiet/" + slug);
             }
 
             catch

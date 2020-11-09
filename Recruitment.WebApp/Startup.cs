@@ -127,6 +127,9 @@ namespace Recruitment.WebApp
                    name: "slug 2",
                    pattern: "{controller=Jobs}/{action=Details}/{slug?}");
                 endpoints.MapControllerRoute(
+                   name: "feedback",
+                   pattern: "{controller=Feedback}/{action=AddFeedback}");
+                endpoints.MapControllerRoute(
                     name: "Slug",
                     pattern: "chi-tiet/{*slug}",
                     defaults: new { controller = "Jobs", action = "Details" });

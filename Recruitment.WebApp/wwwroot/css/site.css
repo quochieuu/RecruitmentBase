@@ -86,17 +86,20 @@ body {
 
 .starFadeN {
     background-image: url('https://i.imgur.com/l1v62LE.gif');
-    min-width: 30px;
-    min-height: 30px;
+    min-width: 15px;
+    min-height: 15px;
     display: inline-block;
+    background-size: 15px;
+    background-repeat: no-repeat;
 }
 
-.starGlow {
-    background-image: url('https://i.imgur.com/hHU12Q5.gif');
-    min-width: 30px;
-    min-height: 30px;
+.starGlowN {
+    background-image: url(https://i.imgur.com/hHU12Q5.gif);
+    min-width: 15px;
+    min-height: 15px;
     display: inline-block;
-    cursor: pointer;
+    background-size: 15px;
+    background-repeat: no-repeat;
 }
 
 .starGlowN {

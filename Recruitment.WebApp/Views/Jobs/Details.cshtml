@@ -92,7 +92,7 @@
                 <hr />
                 <div class="row">
                     <div class="col-md-3">
-                        <i>@c.CommentOn</i>
+                        <i style="font-size: 11px;">@c.CommentOn</i>
                         <br />
                         @for (var i = 1; i <= c.Rating; i++)
                         {
@@ -103,14 +103,14 @@
                             <span class="starFadeN"></span>
                         }
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9" style="font-size: 12px;">
                         @Html.Raw(c.Comment)
 
 
                     </div>
                 </div>
             }
-            <hr />
+            <hr style="border: 1px solid #cccccc1f; unicode-bidi: normal; margin-block-start: 0; margin-block-end: 0;" />
             @Html.Partial("_CommentBox")
 
             <script>
