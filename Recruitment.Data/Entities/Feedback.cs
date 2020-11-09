@@ -10,6 +10,9 @@ namespace Recruitment.Data.Entities
         public string Comment { get; set; }
         public int Rating { get; set; }
         public DateTime CommentOn { get; set; }
+
+        public AppUser CommentBy { get; set; }
+
         public Guid JobId { get; set; }
         public Job Job { get; set; }
     }

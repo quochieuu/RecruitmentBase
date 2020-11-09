@@ -52,7 +52,7 @@ namespace Recruitment.Data.Extensions
                 LastName = "Hồ Quốc",
                 FirstName = "Hiếu",
                 FullName= "Hồ Quốc Hiếu",
-                UrlAvatar = "client/assets/img/avt1.png"
+                UrlAvatar = "client/assets/img/avt1.jpg"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
@@ -74,7 +74,7 @@ namespace Recruitment.Data.Extensions
                 LastName = "Nguyễn Phước Lê",
                 FirstName = "Hiếu",
                 FullName = "Nguyễn Phước Lê",
-                UrlAvatar = "client/assets/img/avt2.png"
+                UrlAvatar = "client/assets/img/avt2.jpg"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
@@ -96,7 +96,7 @@ namespace Recruitment.Data.Extensions
                 LastName = "Phan Văn",
                 FirstName = "Lộc",
                 FullName = "Phan Văn Lộc",
-                UrlAvatar = "client/assets/img/avt3.png"
+                UrlAvatar = "client/assets/img/avt3.jpg"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
@@ -118,7 +118,7 @@ namespace Recruitment.Data.Extensions
                 LastName = "Huỳnh Gia",
                 FirstName = "Huy",
                 FullName = "Huỳnh Gia Huy",
-                UrlAvatar = "client/assets/img/avt4.png"
+                UrlAvatar = "client/assets/img/avt4.jpg"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
@@ -140,7 +140,7 @@ namespace Recruitment.Data.Extensions
                 LastName = "Sằn Văn",
                 FirstName = "Long",
                 FullName = "Sằn Văn Long",
-                UrlAvatar = "client/assets/img/avt5.png"
+                UrlAvatar = "client/assets/img/avt5.jpg"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
@@ -162,7 +162,7 @@ namespace Recruitment.Data.Extensions
                 LastName = "Đỗ Phúc An Khang",
                 FirstName = "Khang",
                 FullName = "Đỗ Phúc An Khang",
-                UrlAvatar = "client/assets/img/avt6.png"
+                UrlAvatar = "client/assets/img/avt6.jpg"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>

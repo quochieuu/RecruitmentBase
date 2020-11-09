@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Recruitment.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -230,11 +230,18 @@ namespace Recruitment.Data.Migrations
                     Comment = table.Column<string>(nullable: true),
                     Rating = table.Column<int>(nullable: false),
                     CommentOn = table.Column<DateTime>(nullable: false),
+                    CommentById = table.Column<Guid>(nullable: true),
                     JobId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Feedbacks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Feedbacks_AppUsers_CommentById",
+                        column: x => x.CommentById,
+                        principalTable: "AppUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Feedbacks_Job_Jobs_JobId",
                         column: x => x.JobId,
@@ -248,8 +255,8 @@ namespace Recruitment.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "5668c341-4390-41c4-a9c3-4237a99ffc97", "Administrator role", "Admin", "ADMIN" },
-                    { new Guid("f52734c6-4614-4bc8-894a-8feeab71bef0"), "f5674c92-4bd5-442b-8f26-b17f829b9602", "Recruitment role", "Recruitment", "RECRUITMENT" }
+                    { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "379af30f-8608-4854-b597-f69c5e983fa2", "Administrator role", "Admin", "ADMIN" },
+                    { new Guid("f52734c6-4614-4bc8-894a-8feeab71bef0"), "3f27fa0b-d91a-47ad-ae6e-69df12537611", "Recruitment role", "Recruitment", "RECRUITMENT" }
                 });
 
             migrationBuilder.InsertData(
@@ -257,12 +264,12 @@ namespace Recruitment.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Comment", "ConcurrencyStamp", "DateOfBirth", "Email", "EmailConfirmed", "FirstName", "FullName", "Gender", "IdQrCode", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UrlAvatar", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, null, null, "6447f80b-d43c-4c7b-b348-05570aa3a3fb", null, "quochieu@gmail.com", true, "Hiếu", "Hồ Quốc Hiếu", null, null, "Hồ Quốc", false, null, "QUOCHIEU@GMAIL.COM", "QUOCHIEU@GMAIL.COM", "AQAAAAEAACcQAAAAEDm6nY+FwBF3hwkCtP6ZMRgBV2NNbUaCr0Y24QxiihyZrfnT5+gkbFlKe3u4ncQ+gA==", null, false, "", false, "client/assets/img/avt1.png", "quochieu@gmail.com" },
-                    { new Guid("157b9908-7d9c-4d3c-ad32-a15db858ac34"), 0, null, null, "cf96e1a2-4da4-4521-a6f2-cc1751f980de", null, "lehieu@gmail.com", true, "Hiếu", "Nguyễn Phước Lê", null, null, "Nguyễn Phước Lê", false, null, "LEHIEU@GMAIL.COM", "LEHIEU@GMAIL.COM", "AQAAAAEAACcQAAAAEDXBjE9MhPmyHJ8TPSE3Jx7lbltbDtDPqenIIAfejWl4piO9hIax/mEZvwLWBwtIZA==", null, false, "", false, "client/assets/img/avt2.png", "lehieu@gmail.com" },
-                    { new Guid("be6c06a9-e0c7-4d63-bd24-5f3ece98ebc0"), 0, null, null, "7bd9320b-d569-4821-ab43-d650bf692ff2", null, "locpv@gmail.com", true, "Lộc", "Phan Văn Lộc", null, null, "Phan Văn", false, null, "LOCPV@GMAIL.COM", "LOCPV@GMAIL.COM", "AQAAAAEAACcQAAAAEB9tntBCHgZOYZSpTdLhvBADKAd6CxueciSpYTbhkZp8axPZRC0ffC4OkBZ09lUARA==", null, false, "", false, "client/assets/img/avt3.png", "locpv@gmail.com" },
-                    { new Guid("041684eb-cf97-40c6-881c-b766ae9c416a"), 0, null, null, "6e774019-9a6b-424c-80ab-037ca88873d0", null, "giahuy@gmail.com", true, "Huy", "Huỳnh Gia Huy", null, null, "Huỳnh Gia", false, null, "GIAHUY@GMAIL.COM", "GIAHUY@GMAIL.COM", "AQAAAAEAACcQAAAAEKzYcsNY2W4kRBNwVwSaani8dY4qh8mbuTktTiqQry6VkuumFTDLuFzFZl/H42qRwA==", null, false, "", false, "client/assets/img/avt4.png", "giahuy@gmail.com" },
-                    { new Guid("d7b7ce9e-f39f-4fea-9f2a-487a5355fbe9"), 0, null, null, "6e3fd218-b9be-4a97-9e7a-d477bf5b3c0a", null, "vanlong@gmail.com", true, "Long", "Sằn Văn Long", null, null, "Sằn Văn", false, null, "VANLONG@GMAIL.COM", "VANLONG@GMAIL.COM", "AQAAAAEAACcQAAAAEI8JZlvAsr6sAXBBDZzKNL0SWkC7eeZV0ObZ8OAMUS+OlH/hENEDpZWzPtBuSNf4gw==", null, false, "", false, "client/assets/img/avt5.png", "vanlong@gmail.com" },
-                    { new Guid("9bc1bf33-d875-42b2-a39e-b0cfc3fb6f2c"), 0, null, null, "f4cdce90-c3af-441c-8128-f8be220eb70c", null, "ankhang@gmail.com", true, "Khang", "Đỗ Phúc An Khang", null, null, "Đỗ Phúc An Khang", false, null, "ANKHANG@GMAIL.COM", "ANKHANG@GMAIL.COM", "AQAAAAEAACcQAAAAEIMs46WRnyQ1gWifWkV47G4Oh5ij9HjJNyEIE2/kgXLpVmX0uDKPeM3GuYJiVcanFg==", null, false, "", false, "client/assets/img/avt6.png", "ankhang@gmail.com" }
+                    { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, null, null, "4a7307d9-bd86-4d11-852f-9ff44d36b188", null, "quochieu@gmail.com", true, "Hiếu", "Hồ Quốc Hiếu", null, null, "Hồ Quốc", false, null, "QUOCHIEU@GMAIL.COM", "QUOCHIEU@GMAIL.COM", "AQAAAAEAACcQAAAAEMH7J6ZdGZMLt3Khtb0vbcjO/4wQx9wOtEcfFGvp/sucFazqoueGr/uILFvqccX4pQ==", null, false, "", false, "client/assets/img/avt1.jpg", "quochieu@gmail.com" },
+                    { new Guid("157b9908-7d9c-4d3c-ad32-a15db858ac34"), 0, null, null, "5c5692f6-950e-4bb3-a031-c424eefc2ddb", null, "lehieu@gmail.com", true, "Hiếu", "Nguyễn Phước Lê", null, null, "Nguyễn Phước Lê", false, null, "LEHIEU@GMAIL.COM", "LEHIEU@GMAIL.COM", "AQAAAAEAACcQAAAAEHobPhouLTH50vPLkPZncdW5MWRcWJER7VuQ7E1g3X7dbx7JMjNWNLRNxVpAZLYu5g==", null, false, "", false, "client/assets/img/avt2.jpg", "lehieu@gmail.com" },
+                    { new Guid("be6c06a9-e0c7-4d63-bd24-5f3ece98ebc0"), 0, null, null, "aec9edab-85d7-46f0-9bec-188c09c3a425", null, "locpv@gmail.com", true, "Lộc", "Phan Văn Lộc", null, null, "Phan Văn", false, null, "LOCPV@GMAIL.COM", "LOCPV@GMAIL.COM", "AQAAAAEAACcQAAAAEI9HnUwdtz2IOoQXkqOuAQJK1twRT2RBEzDPWZHlghb+viRnWkxUBBoOpnj4WBg2Iw==", null, false, "", false, "client/assets/img/avt3.jpg", "locpv@gmail.com" },
+                    { new Guid("041684eb-cf97-40c6-881c-b766ae9c416a"), 0, null, null, "ec387513-16ad-4d57-837b-888c61804c1c", null, "giahuy@gmail.com", true, "Huy", "Huỳnh Gia Huy", null, null, "Huỳnh Gia", false, null, "GIAHUY@GMAIL.COM", "GIAHUY@GMAIL.COM", "AQAAAAEAACcQAAAAEMFx55cKbrfNBVAY2eWqMIMNSDLm3fXQokKbDjuci/wAIXpZB40sM274Vt+DPzsfbQ==", null, false, "", false, "client/assets/img/avt4.jpg", "giahuy@gmail.com" },
+                    { new Guid("d7b7ce9e-f39f-4fea-9f2a-487a5355fbe9"), 0, null, null, "bd0e18f2-281a-4e24-9ac4-585091499c5b", null, "vanlong@gmail.com", true, "Long", "Sằn Văn Long", null, null, "Sằn Văn", false, null, "VANLONG@GMAIL.COM", "VANLONG@GMAIL.COM", "AQAAAAEAACcQAAAAENWl5JHZxQNrz2gQ2UO06tLYDhtShG8mesFHYBEvRWe5VgNXgyBBXDnJbnl6Dee0Xg==", null, false, "", false, "client/assets/img/avt5.jpg", "vanlong@gmail.com" },
+                    { new Guid("9bc1bf33-d875-42b2-a39e-b0cfc3fb6f2c"), 0, null, null, "0def40fb-c6fc-4d2d-aa9c-09e3ebb371ee", null, "ankhang@gmail.com", true, "Khang", "Đỗ Phúc An Khang", null, null, "Đỗ Phúc An Khang", false, null, "ANKHANG@GMAIL.COM", "ANKHANG@GMAIL.COM", "AQAAAAEAACcQAAAAEMxyOkSaa/hclIwNHnNTd34XmldZQ3wvMY+8l5Nb/vLUnQidqDEEgdilKqvPDwt1+A==", null, false, "", false, "client/assets/img/avt6.jpg", "ankhang@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -321,6 +328,11 @@ namespace Recruitment.Data.Migrations
                 name: "IX_Candidates_JobId",
                 table: "Candidates",
                 column: "JobId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Feedbacks_CommentById",
+                table: "Feedbacks",
+                column: "CommentById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_JobId",

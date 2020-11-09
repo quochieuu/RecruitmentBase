@@ -1,9 +1,4 @@
-﻿<dl class="dl-horizontal">
-    <dt>
-        Comment
-    </dt>
-
-    <dd>
+﻿
         <div class="commentBox">
             <form asp-action="AddFeedback" asp-controller="Feedback" method="post" onsubmit = "return SubmitComment()">
                 @Html.AntiForgeryToken()
@@ -28,15 +23,13 @@
                             <input type="hidden" name="JobId" value="@ViewBag.JobId" />
                             <input type="hidden" name="slug" value="@ViewBag.JobSlug" />
                             <input type="hidden" name="Rating" id="Rating" value="0" />
-                            <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning" />
+                            <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning search-buttons" />
                         </div>
                     </div>
                 </div>
            </form>
         </div>
-    </dd>
 
-</dl>
 <script>
     function SubmitComment() {
         if ($("#Rating").val() == "0") {

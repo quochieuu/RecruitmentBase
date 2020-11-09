@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = Model.Position;
 }
-    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/site2.css" rel="stylesheet" />
 @{
     var comments = (IEnumerable<Recruitment.Data.Entities.Feedback>)ViewBag.Comments;
     var ratingSum = ViewBag.RatingSum;
@@ -84,6 +84,8 @@
                 </div>
             </div>
 
+            <br/>
+            <h3>Bình luận</h3>
             <div>
                 <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
             </div>
