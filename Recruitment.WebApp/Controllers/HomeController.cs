@@ -44,6 +44,7 @@ namespace Recruitment.WebApp.Controllers
                     j.Address.Contains(place) && j.IsActive == true) 
                     .Count();
 
+
             } else
             {
                 ViewBag.ListJob = _context.JobJobs.Where(j => j.IsActive == true).OrderByDescending(p => p.CreatedOn).ToList();
