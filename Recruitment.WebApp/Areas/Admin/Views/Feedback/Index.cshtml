@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Recruitment.Application.MFeedback.FeedbackResponse>
+
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Quản lý bình luận</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Comment)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Rating)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CommentOn)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Job)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comment)
+                                    </td>
+                                    <td>
+                                        @{
+                                            switch (item.Rating)
+                                            {
+                                                case 1:
+                                                    <span>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </span>
+                                                    break;
+                                                case 2:
+                                                    <span>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </span>
+                                                    break;
+                                                case 3:
+                                                    <span>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </span>
+                                                    break;
+                                                case 4:
+                                                    <span>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class="far fa-star"></i>
+                                                    </span>
+                                                    break;
+                                                case 5:
+                                                    <span>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+                                                        <i class='fas fa-star'></i>
+
+                                                    </span>
+                                                    break;
+                                                default:
+                                                    <span></span>
+                                                    break;
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.CommentOn.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Job.Position)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                                    </td>
+                                </tr>
+                                
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

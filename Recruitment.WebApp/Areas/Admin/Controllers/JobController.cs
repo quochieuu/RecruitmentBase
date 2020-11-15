@@ -56,6 +56,8 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 			var response = await _jobApiClient.Details(id);
 			var model = JsonConvert.DeserializeObject<JobResponse>(response.ToString());
 
+			ViewBag.ListFeedbacks = _context.Feedbacks.Where(f => f.JobId == id).ToList();
+
 			return View(model);
 		}
 

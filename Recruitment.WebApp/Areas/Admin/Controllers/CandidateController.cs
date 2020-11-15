@@ -13,7 +13,7 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
 {
 	[Area("Admin")]
 	[Route("admin/candidates")]
-	[Authorize(Roles = "Admin")]
+	[Authorize(Roles = "Admin,Recruitment")]
 	public class CandidateController : Controller
     {
 		private readonly ICandidateApiClient _candidateApiClient;

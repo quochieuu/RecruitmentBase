@@ -113,6 +113,25 @@
                             <img src="~/client/assets/img/@Model.JobImage" style="width: 100%"/>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>List Comments</h3>
+                            <table class="table w-100 table-striped">
+                                @foreach (var cmt in ViewBag.ListFeedbacks)
+                                {
+                                <tr>
+                                    <td>
+                                        <b>@cmt.Name</b>
+                                    </td>
+                                    <td>@cmt.Comment</td>
+                                    <td>@cmt.Rating</td>
+                                    <td>@cmt.CommentOn</td>
+                                </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
                     
                 </div>
                 <div>
