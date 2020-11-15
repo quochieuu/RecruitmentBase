@@ -3,7 +3,7 @@ Recruitment Base is a basic recruitment website for our team's finishing exercis
 
 Technology Stack
 1. ASP.NET Core 3.1
-2. Identity Server 4
+2. Entity Framework Core
 3. SQL Server 2019
 
 # How to run this Project
