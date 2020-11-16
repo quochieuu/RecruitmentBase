@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
+using Recruitment.Data.DataContext;
 using Recruitment.WebApp.Areas.Admin.ViewModel;
 
 namespace Recruitment.WebApp.Areas.Admin.Controllers
@@ -18,21 +19,26 @@ namespace Recruitment.WebApp.Areas.Admin.Controllers
     [Authorize(Roles = "Admin,Recruitment")]
     public class HomeController : Controller
     {
+        private readonly DataDbContext _context;
         private readonly IFileProvider fileProvider;
         [Obsolete]
         private IHostingEnvironment _hostingEnvironment;
 
         [Obsolete]
-        public HomeController(IFileProvider fileProvider, IHostingEnvironment hostingEnvironment)
+        public HomeController(IFileProvider fileProvider, IHostingEnvironment hostingEnvironment, DataDbContext context)
         {
             this.fileProvider = fileProvider;
             _hostingEnvironment = hostingEnvironment;
+            _context = context;
         }
 
         [Route("index")]
         [Route("")]
         public IActionResult Index()
         {
+            ViewBag.TotalUsers = _context.AppUsers.Count();
+            ViewBag.TotalJobs = _context.JobJobs.Count();
+            ViewBag.TotalCandidates = _context.JobCandidates.Count();
             return View();
         }
 

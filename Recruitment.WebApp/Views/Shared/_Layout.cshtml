@@ -76,9 +76,17 @@ input.inp{padding:11px 17px;border:1px solid #e1e1e1;margin-bottom:10px;border-r
                 </div>
                 <div class="header-menu">
                     <a asp-controller="Home" asp-action="Index" class="active">Find Job</a>
-                    <a asp-controller="Account" asp-action="Login">Sign In</a>
-                    <a asp-controller="Account" asp-action="Register">Register</a>
-                    <a asp-area="Admin" asp-controller="Account" asp-action="Login">Admin</a>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a href="/admin">Admin</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login">Sign In</a>
+                        <a asp-controller="Account" asp-action="Register">Register</a>
+                        <a asp-area="Admin" asp-controller="Account" asp-action="Login">Admin</a>
+                    }
+
                 </div>
                 <div class="user-settings">
                     <div class="dark-light">
